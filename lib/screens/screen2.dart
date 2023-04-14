@@ -7,6 +7,7 @@ class Screen2 extends StatelessWidget {
   const Screen2({super.key});
   @override
   Widget build(BuildContext context) {
+    final userBloc = BlocProvider.of<UserBloc>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text('Screen 2'),
@@ -19,13 +20,14 @@ class Screen2 extends StatelessWidget {
                 onPressed: () {
                   final newUser = User(
                       age: 24, name: 'Luis', professions: ['Frontend Dev']);
-                  BlocProvider.of<UserBloc>(context, listen: false)
-                      .add(ActivateUser(newUser));
+                  userBloc.add(ActivateUser(newUser));
                 },
                 color: Colors.blue,
                 child: const Text('Set User')),
             MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  userBloc.add(ChangeUserAge(40));
+                },
                 color: Colors.blue,
                 child: const Text('Set Age')),
             MaterialButton(
