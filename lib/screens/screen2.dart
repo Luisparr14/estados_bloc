@@ -31,7 +31,9 @@ class Screen2 extends StatelessWidget {
                 color: Colors.blue,
                 child: const Text('Set Age')),
             MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  userBloc.add(AddProfession('Dev'));
+                },
                 color: Colors.blue,
                 child: const Text('Set Profesion')),
           ],
