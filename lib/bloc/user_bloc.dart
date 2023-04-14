@@ -7,9 +7,9 @@ part 'user_events.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvents, UserState> {
-  UserBloc():super(const UserInitialState()) {
+  UserBloc() : super(const UserInitialState()) {
     on<ActivateUser>((event, emit) {
-      
+      emit(SetUserState(event.user));
     });
   }
 }
