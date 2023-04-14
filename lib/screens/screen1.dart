@@ -8,9 +8,17 @@ class Screen1 extends StatelessWidget {
   const Screen1({super.key});
   @override
   Widget build(BuildContext context) {
+    final userBloc = BlocProvider.of<UserBloc>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Screen 1'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                userBloc.add(DeleteUser());
+              },
+              icon: const Icon(Icons.exit_to_app))
+        ],
       ),
       body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
@@ -52,7 +60,9 @@ class UserInfomation extends StatelessWidget {
           const Text('Profesiones',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           const Divider(),
-          ...user.professions.map((profesion) =>ListTile(title: Text(profesion))).toList()
+          ...user.professions
+              .map((profesion) => ListTile(title: Text(profesion)))
+              .toList()
         ],
       ),
     );
