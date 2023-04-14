@@ -1,13 +1,13 @@
 class User {
   
-  String? name;
-  int? age;
-  List<String>? professions;
+  String name;
+  int age;
+  List<String> professions;
 
   User({ 
-    this.name, 
-    this.age, 
-    this.professions 
+    required this.name, 
+    required this.age, 
+    required this.professions 
   });
 
 }
